@@ -1,5 +1,6 @@
 package br.com.devcapu.securenote.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,7 +14,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 class HomeActivity : AppCompatActivity(R.layout.activity_home) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         configureNotesList()
         configureFAB()
     }
@@ -27,7 +27,9 @@ class HomeActivity : AppCompatActivity(R.layout.activity_home) {
         )
 
         val adapter = NoteListAdapter(notes) {
-            goToDetails()
+            goToDetails(intent = getIntent(context = this).apply {
+                putExtra(EXTRA_NOTE_ID, 1)
+            })
         }
         recyclerView.adapter = adapter
     }
@@ -39,7 +41,5 @@ class HomeActivity : AppCompatActivity(R.layout.activity_home) {
         }
     }
 
-    private fun goToDetails() = startActivity(getIntent(this).apply {
-        putExtra(EXTRA_NOTE_ID, 1)
-    })
+    private fun goToDetails(intent: Intent = getIntent(context = this)) = startActivity(intent)
 }

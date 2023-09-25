@@ -18,7 +18,7 @@
             android:id="@+id/note_details_activity_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:menu="@menu/activity_note_details_menu"
+            app:menu="@menu/activity_note_details_save_menu"
             app:navigationIcon="@drawable/ic_back" />
 
     </com.google.android.material.appbar.AppBarLayout>
